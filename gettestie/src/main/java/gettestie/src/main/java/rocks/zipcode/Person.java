@@ -9,9 +9,10 @@ public class Person {
     /**
      * Create a person with given name and age.
      */
-    Person(String name, int yearOfBirth) {
+    Person(String name, int yearOfBirth, Address address) {
         this.name = name;
         this.yearOfBirth = yearOfBirth;
+        this.address = address;
     }
 
     /**

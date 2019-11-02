@@ -1,4 +1,4 @@
-package rocks.zipcode;
+package gettestie.src.main.java.rocks.zipcode;
 
 import static org.junit.Assert.*;
 import java.util.Stack;
