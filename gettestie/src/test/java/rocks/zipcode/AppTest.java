@@ -15,4 +15,18 @@ public class AppTest {
     public void testApp() {
         assertTrue(true);
     }
+
+    @Test
+    public void addressConstructorTest(){
+        String expectedStreet = "Landon Drive";
+        String expectedTown = "Wilmington";
+        String expectedPostCode = "19810"
+        Address address = new Address(street, town, postCode);
+
+        String actualStreet = address.getStreet();
+        String actualTown = address.getTown();
+        String actualPostCode = address.getPostCode();
+
+        Assert.assertEquals.
+    }
 }
