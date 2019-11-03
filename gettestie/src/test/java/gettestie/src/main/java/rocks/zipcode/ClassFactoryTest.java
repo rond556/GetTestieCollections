@@ -438,6 +438,70 @@ public class ClassFactoryTest {
 
         Assert.assertEquals(expectedDescending,actualDescending);
     }
+
+    @Test
+    public void iteratorTest1(){
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+        Person[] party = {sabin, edgar, shadow, celes, cyan};
+        ArrayList<Person> partyList = ClassFactory.arrayListCreator(party);
+
+        Iterator iterator = partyList.iterator();
+        Assert.assertTrue(iterator.hasNext());
+    }
+
+    @Test
+    public void iteratorTest2(){
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+        Person[] party = {sabin, edgar, shadow, celes, cyan};
+        ArrayList<Person> partyList = ClassFactory.arrayListCreator(party);
+
+        Iterator iterator = partyList.iterator();
+        Assert.assertEquals(sabin,iterator.next());
+    }
+
+    @Test
+    public void priorityQueueCreatorTest1() {
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+        PriorityQueue<Integer> actualParty = new PriorityQueue<>();
+        actualParty.add(sabin.getYearOfBirth());
+        actualParty.add(edgar.getYearOfBirth());
+        actualParty.add(shadow.getYearOfBirth());
+        actualParty.add(celes.getYearOfBirth());
+        actualParty.add(cyan.getYearOfBirth());
+        Assert.assertEquals(cyan.getYearOfBirth(), (int)actualParty.peek());
+    }
+
+    @Test
+    public void priorityQueueCreatorTest2() {
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+        Object[] party = {edgar.getYearOfBirth(),sabin.getYearOfBirth(),celes.getYearOfBirth()};
+        PriorityQueue<Integer> actualParty = new PriorityQueue<>();
+        actualParty.add(sabin.getYearOfBirth());
+        actualParty.add(edgar.getYearOfBirth());
+        actualParty.add(shadow.getYearOfBirth());
+        actualParty.add(celes.getYearOfBirth());
+        actualParty.add(cyan.getYearOfBirth());
+        actualParty.poll();
+        actualParty.poll();
+        Object[] shortenedParty = actualParty.toArray();
+        Assert.assertEquals(party,shortenedParty);
+    }
 }
 
 
