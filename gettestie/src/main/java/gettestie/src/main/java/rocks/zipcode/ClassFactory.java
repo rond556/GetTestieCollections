@@ -1,31 +1,41 @@
 package gettestie.src.main.java.rocks.zipcode;
 
-import com.sun.tools.javac.util.ArrayUtils;
-
 import java.util.*;
 
 public class ClassFactory {
     private String name;
 
-    public HashSet<Person> hashSetCreator(Person[] people){
+    public static HashSet<Person> hashSetCreator(Person[] people){
         return new HashSet<>(Arrays.asList(people));
     }
 
-    public ArrayList<Person> arrayListCreator(Person[] people){
-        return new ArrayList<Person>(Arrays.asList(people));
+    public static ArrayList<Person> arrayListCreator(Person[] people){
+        return new ArrayList<>(Arrays.asList(people));
     }
 
-    public HashMap<Person,String> hashMapCreator(Person person, String name){
-        HashMap<Person, String> personHashMap = new HashMap;
-        personHashMap.put(person,name);
+    public static HashMap<Person,String> hashMapCreator(){
+        HashMap<Person, String> personHashMap = new HashMap();
         return personHashMap;
     }
 
-    public Queue<Person> queueCreator(Person[] people){
+    public static Queue<Person> queueCreator(Person[] people){
         return new LinkedList<>(Arrays.asList(people));
     }
 
-    public ArrayDeque<Person> dequeCreator(Person[] people){
+    public static ArrayDeque<Person> dequeCreator(Person[] people){
         return new ArrayDeque<>(Arrays.asList(people));
+    }
+
+    public static Vector<Person> vectorCreator(Person[] people){
+        return new Vector<>(Arrays.asList(people));
+    }
+
+    public static TreeMap<Integer,String> treeMapCreator(){
+        TreeMap<Integer, String> personTreeMap = new TreeMap();
+        return personTreeMap;
+    }
+
+    public static Stack stackCreator(){
+        return new Stack();
     }
 }
