@@ -38,4 +38,8 @@ public class ClassFactory {
     public static Stack stackCreator(){
         return new Stack();
     }
+
+    public static TreeSet<Person> treeSetCreator(Person[] people){
+        return new TreeSet<>(Arrays.asList(people));
+    }
 }
