@@ -502,6 +502,54 @@ public class ClassFactoryTest {
         Object[] shortenedParty = actualParty.toArray();
         Assert.assertEquals(party,shortenedParty);
     }
+
+    @Test
+    public void comparableTest1() {
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+
+        Integer shadowBirthday = shadow.getYearOfBirth();
+        Integer celesBirthday = celes.getYearOfBirth();
+
+        Integer result = celesBirthday.compareTo(shadowBirthday);
+
+        Assert.assertTrue(result > 0);
+    }
+
+    @Test
+    public void comparableTest2() {
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+
+        Integer shadowBirthday = shadow.getYearOfBirth();
+        Integer celesBirthday = celes.getYearOfBirth();
+
+        Integer result = shadowBirthday.compareTo(celesBirthday);
+
+        Assert.assertTrue(result < 0);
+    }
+
+    @Test
+    public void comparableTest() {
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+
+        Integer edgarBirthday = edgar.getYearOfBirth() + 1;
+        Integer sabinBirthday = sabin.getYearOfBirth();
+
+        Integer result = edgarBirthday.compareTo(sabinBirthday);
+
+        Assert.assertTrue(result == 0);
+    }
 }
 
 
