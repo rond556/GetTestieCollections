@@ -39,7 +39,7 @@ public class ClassFactory {
         return new Stack();
     }
 
-    public static TreeSet<Person> treeSetCreator(Person[] people){
-        return new TreeSet<>(Arrays.asList(people));
+    public static TreeSet<Integer> treeSetCreator(){
+        return new TreeSet<>(Collections.emptyList());
     }
 }

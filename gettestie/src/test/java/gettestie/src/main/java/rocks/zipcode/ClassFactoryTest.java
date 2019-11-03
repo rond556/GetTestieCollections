@@ -3,6 +3,7 @@ package gettestie.src.main.java.rocks.zipcode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.swing.event.TreeSelectionEvent;
 import java.util.*;
 
 public class ClassFactoryTest {
@@ -377,8 +378,9 @@ public class ClassFactoryTest {
         Person shadow = new Person("Shadow", 1983, null);
         Person celes = new Person("Celes", 1988, null);
         Person cyan = new Person("Cyan", 1966, null);
-        Person[] party = {sabin, edgar, shadow, celes, cyan};
-        TreeSet<Person> partyTreeSet = ClassFactory.treeSetCreator(party);
+
+        TreeSet<Integer> partyTreeSet = ClassFactory.treeSetCreator();
+        partyTreeSet.add(sabin.getYearOfBirth());
         partyTreeSet.clear();
 
         Assert.assertTrue(partyTreeSet.isEmpty());
@@ -391,9 +393,9 @@ public class ClassFactoryTest {
         Person shadow = new Person("Shadow", 1983, null);
         Person celes = new Person("Celes", 1988, null);
         Person cyan = new Person("Cyan", 1966, null);
-        Person[] party = {sabin, edgar, shadow, celes, cyan};
-        TreeSet<Person> partyTreeSet = ClassFactory.treeSetCreator(party);
-        Assert.assertTrue(partyTreeSet.contains(edgar));
+        TreeSet<Integer> partyTreeSet = ClassFactory.treeSetCreator();
+        partyTreeSet.add(sabin.getYearOfBirth());
+        Assert.assertTrue(partyTreeSet.contains(sabin.getYearOfBirth()));
     }
 
     @Test
@@ -403,11 +405,39 @@ public class ClassFactoryTest {
         Person shadow = new Person("Shadow", 1983, null);
         Person celes = new Person("Celes", 1988, null);
         Person cyan = new Person("Cyan", 1966, null);
-        Person[] party = {sabin, edgar, shadow, celes, cyan};
-        TreeSet<Person> partyTreeSet = ClassFactory.treeSetCreator(party);
-        Assert.assertEquals(sabin,partyTreeSet.last());
-    }
+        TreeSet<Integer> partyTreeSet = ClassFactory.treeSetCreator();
+        partyTreeSet.add(sabin.getYearOfBirth());
+        partyTreeSet.add(edgar.getYearOfBirth());
+        partyTreeSet.add(celes.getYearOfBirth());
+        partyTreeSet.add(cyan.getYearOfBirth());
+        partyTreeSet.add(shadow.getYearOfBirth());
 
+        Assert.assertEquals( cyan.getYearOfBirth(),(int)partyTreeSet.first());
+    }
+    @Test
+    public void treeSetCreatorTest4() {
+        Person sabin = new Person("Sabin", 1985, null);
+        Person edgar = new Person("Edgar", 1984, null);
+        Person shadow = new Person("Shadow", 1983, null);
+        Person celes = new Person("Celes", 1988, null);
+        Person cyan = new Person("Cyan", 1966, null);
+        TreeSet<Integer> partyTreeSet = ClassFactory.treeSetCreator();
+        partyTreeSet.add(sabin.getYearOfBirth());
+        partyTreeSet.add(edgar.getYearOfBirth());
+        partyTreeSet.add(celes.getYearOfBirth());
+        partyTreeSet.add(cyan.getYearOfBirth());
+        partyTreeSet.add(shadow.getYearOfBirth());
+        NavigableSet<Integer> actualDescending = partyTreeSet.descendingSet();
+
+        NavigableSet<Integer> expectedDescending = new TreeSet<Integer>();
+        expectedDescending.add(celes.getYearOfBirth());
+        expectedDescending.add(sabin.getYearOfBirth());
+        expectedDescending.add(edgar.getYearOfBirth());
+        expectedDescending.add(shadow.getYearOfBirth());
+        expectedDescending.add(cyan.getYearOfBirth());
+
+        Assert.assertEquals(expectedDescending,actualDescending);
+    }
 }
 
 
